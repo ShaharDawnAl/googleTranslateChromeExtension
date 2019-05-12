@@ -1,0 +1,35 @@
+{
+    "manifest_version": 2,
+    "name": "Translate The Whole Page",
+    "version": "1.0",
+    "description": "Translates the page you want just with one click",
+    "icons": {
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+    "background": {
+        "scripts": [
+            "eventPage.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.1688.com/*","*://*.taobao.com/*"
+            ],
+            "js": [
+                "content.js",
+                "jquery-3.3.1.min.js"
+            ],"run_at": "document_idle"
+        }
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';",
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "contextMenus",
+        "*://*.1688.com/*","*://*.taobao.com/*"
+    ]
+}
